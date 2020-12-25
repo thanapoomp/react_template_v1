@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import { connect } from "react-redux";
 import { FormattedMessage, injectIntl } from "react-intl";
 import * as auth from "../_redux/authRedux";
-import { login, getUserByToken, getExp } from "../_redux/authCrud";
+import { login, getUserByToken, getExp, getRoles } from "../_redux/authCrud";
 
 /*
   INTL (i18n) docs:
@@ -84,8 +84,8 @@ function Login(props) {
              // get exp
              loginDetail.exp = getExp(res.data.data);
 
-             //todo: get roles
-             loginDetail.roles = []
+             //get roles
+             loginDetail.roles = getRoles(res.data.data)
 
             props.login(loginDetail);
 
